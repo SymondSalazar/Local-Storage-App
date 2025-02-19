@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    display: grid;
+    top: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background: #0A3143;
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    text-align: center;
+}
+
+.files {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

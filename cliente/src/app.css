@@ -1,0 +1,300 @@
+.sm-folder-cards {
+    width: 75vw;
+    height: auto;
+    background: #276E90;
+    padding: 10px;
+    box-sizing: border-box;
+    place-content: center;
+    border-radius: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: auto;
+    text-align: center;
+    font-size: larger;
+    flex-direction: column;
+}
+
+.sm-folder-cards-div {
+    color: #fff;
+    font-size: 30px;
+    place-content: center;
+    text-align: center;
+    overflow-wrap: anywhere;
+    flex: 1;
+    flex-basis: auto;
+    width: 100%;
+    transition: 150ms;
+}
+.sm-folder-cards-div:hover{
+    color:#9b9a9a;
+    transition: 150ms;
+    cursor: pointer;
+}
+
+
+.sm-folder-cards-header {
+    flex-grow: 1;
+    left: 20px;
+    flex: 1;
+    place-content: center;
+    flex-basis: auto;
+
+}
+
+.sm-folder-cards-footer {
+    flex-grow: 1;
+    flex-basis: auto;
+    flex: 1;
+    place-content: center;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    font-size: 30px;
+}
+
+.download{
+    color: rgb(102, 250, 102);
+    font-size: 30px;
+}
+
+.folder{
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    transition: 150ms;
+    width:  100%;
+}
+.folder:hover{
+    color: #9b9a9a;
+    transition: 150ms;
+    cursor: pointer;
+}
+.sm-files-cards-button {
+    background: none;
+    border: none;
+}
+
+.sm-files-cards-button:hover {
+    border-radius: 10px;
+    background: #276E90;
+    transition: 300ms;
+    cursor: pointer;
+}
+
+
+
+/*Desde aqui empieza el de folders xD*/
+
+.sm-files-cards {
+    width: 75vw;
+    height: auto;
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    place-content: center;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: auto;
+    text-align: center;
+    font-size: larger;
+    overflow: hidden;
+
+}
+
+.sm-files-cards-div {
+    color:#276E90 ;
+    place-content: center;
+    text-align: center;
+    font-size: 30px;
+    overflow-wrap: anywhere;
+    flex: 1;
+    flex-basis: auto;
+
+}
+
+.sm-files-cards-header {
+    flex-grow: 1;
+    flex: 1;
+    place-content: center;
+    flex-basis: auto;
+
+}
+
+.sm-files-cards-footer {
+    flex-grow: 1;
+    flex-basis: auto;
+    place-content: center;
+    flex: 1;
+
+}
+.delete{
+    color:rgb(255, 53, 53);
+}
+
+
+.archivo{
+    color:#276E90;
+    font-size: 40px;
+}
+
+
+.sm-folder-cards-button {
+    background: none;
+    border: none;
+}
+
+.sm-folder-cards-button:hover {
+    border-radius: 10px;
+    background: #ffffff;
+    transition: 300ms;
+    cursor: pointer;
+}
+
+h1{
+    font-size: 50px;
+    text-align: center;
+    color: rgb(255, 254, 254);
+    top: 0;
+    width: 100vw;
+    place-content: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.dropbox{
+    background: #ffffff;
+    width: 75vw;
+    height: 300px;
+    border-radius: 9px;
+    place-content: center;
+    font-size: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    color: #b9b9b9;
+    
+    box-sizing: border-box;
+    border: #b9b9b9;
+    border: 4px dashed #b9b9b9;
+    cursor: pointer;
+}
+
+
+
+.dropbutton{
+    background: none;
+    width: auto;
+    height: auto;
+    font-weight: 700;
+    font-size: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    color: #b9b9b9;
+    gap: 10px;
+    box-sizing: border-box;
+    border: none;
+    transition: 150ms;
+    place-content: center;
+}
+
+.dropbutton:hover{
+    background: none;
+    transition: 150ms;
+    color: #9b9a9a;
+
+}
+#inputFile{
+    display: none;
+}
+
+.createFolder {
+    width: 75vw;
+    height: auto;
+    background: #2e81a7;
+    padding: 10px;
+    box-sizing: border-box;
+    place-content: center;
+    border-radius: 9px;
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 800;
+    transition: 150ms;
+    word-wrap: break-word;
+    white-space: normal;
+}
+.createFolder:hover{
+    background: #276E90;
+    transition: 150ms;
+    width: 75vw;
+    cursor: pointer;
+}
+
+.buttonBack{
+    background: white;
+    place-content: center;
+    border-radius: 9px;
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    color: #276E90;
+    font-weight: 800;
+    transition: 150ms;
+    width: 75vw;
+    height: 42;
+    padding: 10;
+    transition: 150ms;
+}
+
+.buttonBack:hover{
+    background: #cdcbcb;
+    transition: 150ms;
+    cursor: pointer;
+}
+.mouse{
+    font-size: 50px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    place-content: center;
+    width: 75vw;
+}
+
+.inputTexto{
+    color: #276E90;
+    font-size: 20px;
+    height: 40px;
+    width: 75vw;
+    font-weight: 600;
+    border: none;
+    padding-left: 10px;
+    box-sizing: content-box;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+h2{
+    color: white;
+    font-size: 30px;
+}
+
+p{
+    color: white;
+    font-size: 15px;
+}
+
+
+.imagen{
+    width: 50vw;
+    height: auto;
+}
