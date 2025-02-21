@@ -1,13 +1,14 @@
-const path = require('node:path')
-const fs = require('node:fs')
+import { join,dirname } from 'node:path'
+import { mkdir, existsSync, writeFile } from 'node:fs'
 
-const subirarchivo = (strRuta,name,data,type)=>{
+export const subirarchivo = (strRuta,name,data,type)=>{
     const pathdir = strRuta.split("-")
-    const folder = path.join(__dirname, 'SaveData', ...pathdir)
+   const baseDir = dirname(new URL(import.meta.url).pathname).slice(1,)
+    const folder = join(baseDir,'SaveData', ...pathdir)
     const buffer = Buffer.from(data, 'base64')
 
     if(type === 'folder'){
-        fs.mkdir(path.join(folder,name), (err) => {
+        mkdir(join(folder,name), (err) => {
             if (err) console.error(err)
             console.log('Directorio creado')
         })
@@ -15,13 +16,12 @@ const subirarchivo = (strRuta,name,data,type)=>{
     }
 
     
-    if(!fs.existsSync(folder)) return console.error('Directorio no encontrado')
+    if(!existsSync(folder)) return console.error('Directorio no encontrado')
 
-    fs.writeFile(path.join(folder,name), buffer, (err) => {    
+    writeFile(join(folder,name), buffer, (err) => {    
         if (err) console.error(err)
         console.log('Archivo guardado')
     })
 
 }
 
-module.exports= {subirarchivo}

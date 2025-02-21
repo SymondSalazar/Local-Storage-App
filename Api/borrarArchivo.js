@@ -1,12 +1,16 @@
-const path = require('node:path')
-const fs = require('node:fs')
+import path from 'node:path'
+import fs from 'node:fs'
+import os from 'node:os'
+import { join,dirname } from 'node:path'
 
-const borrarArchivo = (strRuta, type, nombre,callback) => {
+
+export const borrarArchivo = (strRuta, type, nombre,callback) => {
     const pathdir = strRuta.split("-")
-    const folder = path.join(__dirname, 'SaveData', ...pathdir)
+    const baseDir = dirname(new URL(import.meta.url).pathname).slice(1,)
+    const folder = join(baseDir,'SaveData', ...pathdir)
 
     if (type === 'folder') {
-
+        
         fs.rm(path.join(folder, nombre), { recursive: true }, (err) => {
             if (err) {
                 console.error("No se encontro el directorio")
@@ -29,4 +33,3 @@ const borrarArchivo = (strRuta, type, nombre,callback) => {
         })
     }
 }
-module.exports= {borrarArchivo}

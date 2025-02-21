@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"node --watch Api/App.js\" \"cd cliente && npx vite --host\""
+    "start": "concurrently \"cd Api && npm run start\" \"cd cliente && npx vite --host\""
   },
   "repository": {
     "type": "git",

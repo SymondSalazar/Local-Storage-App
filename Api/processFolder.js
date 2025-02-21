@@ -1,14 +1,21 @@
-const path = require('node:path')
-const fs = require('node:fs')
-const procesarFolder = (strRuta,callback) => {
+import { join,dirname } from 'node:path'
 
+import { readdir, lstatSync } from 'node:fs'
+
+
+export const procesarFolder = (strRuta,callback) => {
+ 
     const pathdir = strRuta.split("-")
-    const folder = path.join(__dirname, 'SaveData', ...pathdir)
+    const baseDir = dirname(new URL(import.meta.url).pathname).slice(1,)
     
-    fs.readdir(folder, (err, files) => {
+    const folder = join(baseDir,'SaveData', ...pathdir)
+    
+    readdir(folder, (err, files) => {
         if (err){
+            
             err.message = "No se encontro el directorio"
             return callback([],[],err)
+
         }
         
         let folders = []
@@ -17,7 +24,7 @@ const procesarFolder = (strRuta,callback) => {
         let pending = files.length
  
         files.forEach(file => {
-            if(fs.lstatSync(path.join(folder, file)).isDirectory()){
+            if(lstatSync(join(folder, file)).isDirectory()){
                 folders.push(file)
             }else{
                 filesArray.push(file)
@@ -36,4 +43,3 @@ const procesarFolder = (strRuta,callback) => {
     
 }
 
-module.exports = {procesarFolder}

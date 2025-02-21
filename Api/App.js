@@ -1,32 +1,32 @@
-const express = require('express')
-const { subirarchivo } = require('./subir')
-const { procesarFolder } = require('./processFolder')
-const { borrarArchivo } = require('./borrarArchivo')
-const path = require('path')
-const fs = require('fs')
-const app = express()
-const cors = require('cors')
+import express, { json, urlencoded } from 'express'
+import { subirarchivo } from './subir.js'
+import { procesarFolder } from './processFolder.js'
+import { borrarArchivo } from './borrarArchivo.js'
+import { join,dirname } from 'node:path'
+import { readFile } from 'node:fs'
+import cors from 'cors'
 
-const port = process.env.PORT ?? 3000
+
+
+
+const app = express()
 
 app.disable('x-powered-by')
-
-app.use(express.json({limit: '2048mb'}))
-app.use(express.urlencoded({ limit: '50mb', extended: true }));
-
+app.use(json({limit: '2048mb'}))
+app.use(urlencoded({ limit: '50mb', extended: true }));
 app.use(cors())
+
+
 //Ruta default
 app.get('/', (req, res) => {
-    
-    res.header('')
     procesarFolder("", (folders, files, err) => {
         if (err) {
             return res.status(500).json({ error: err })
         }
-        res.json({ folders, files })
-        return res.status(200)
+        return res.status(200).json({ folders, files })
     })
 })
+
 
 //Ruta con parametro
 app.get('/:pathRuta', (req, res) => {
@@ -35,14 +35,12 @@ app.get('/:pathRuta', (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message })
         }
-        res.json({ folders, files })
-        return res.status(200)
+        return res.status(200).json({ folders, files })
     })
 })
 
 app.get('/download/files/', (req, res) => {
     const { nombre } = req.query
-   // console.log(nombre)
     descargar('', nombre,res)
 
 })
@@ -99,12 +97,13 @@ app.delete('/:pathRuta', (req, res) => {
 
 const descargar = (strRuta, nombre,res) => {
     const pathdir = strRuta.split("-")
-    const folder = path.join(__dirname, 'SaveData', ...pathdir)
-    fs.readFile(path.join(folder, nombre),'base64', (err, data) => {
+    const baseDir = dirname(new URL(import.meta.url).pathname).slice(1,)
+    const folder = join(baseDir, 'SaveData', ...pathdir)
+    readFile(join(folder, nombre),'base64', (err, data) => {
         if (err) {
-            res.status(404).send('No se encontro el archivo')
+            return res.status(404).send('No se encontro el archivo')
         }else{
-            res.status(200).json({name:nombre,data:data})
+            return res.status(200).json({name:nombre,data:data})
         }
     })
 }
@@ -114,7 +113,8 @@ app.use((req, res) => {
     return res.json({ error: 'Not Found' }).status(404)
 })
 
+const PORT = process.env.PORT ?? 3000
 
-app.listen(port,'0.0.0.0', () => {
-    console.log(`Server corriendo en http://localhost:${port}`)
+app.listen(PORT,'0.0.0.0', () => {
+    console.log(`Server corriendo en http://localhost:${PORT}`)
 })
