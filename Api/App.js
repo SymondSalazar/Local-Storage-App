@@ -5,7 +5,7 @@ const { borrarArchivo } = require('./borrarArchivo')
 const path = require('path')
 const fs = require('fs')
 const app = express()
-const {cors} = require('cors')
+const cors = require('cors')
 
 const port = process.env.PORT ?? 3000
 
@@ -14,18 +14,7 @@ app.disable('x-powered-by')
 app.use(express.json({limit: '2048mb'}))
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*") // Permitir cualquier origen
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")// Agregar DELETE
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    
-    // Manejo de preflight (OPTIONS) para evitar problemas con solicitudes DELETE
-    if (req.method === "OPTIONS") {
-        return res.sendStatus(204)
-    }
-
-    next()
-})
+app.use(cors())
 //Ruta default
 app.get('/', (req, res) => {
     
@@ -69,14 +58,14 @@ app.get('/download/files/:pathRuta', (req, res) => {
 app.post('/', (req, res) => {
     const { type, nombre, data } = req.body
     subirarchivo('', nombre, data, type)
-    res.status(201).send('Accion completada')
+    return res.status(201).send('Accion completada')
 })
 
 app.post('/:pathRuta', (req, res) => {
     const { pathRuta } = req.params
     const { type, nombre, data } = req.body
     subirarchivo(pathRuta, nombre, data, type)
-    res.status(201).send('Accion completada')
+    return res.status(201).send('Accion completada')
 })
 
 
@@ -86,9 +75,9 @@ app.delete('/', (req, res) => {
     const { type, nombre } = req.query
     borrarArchivo('', type, nombre,(err)=>{
         if(err){
-            res.status(404).send('No se encontro el archivo')
+            return res.status(404).send('No se encontro el archivo')
         }else{
-            res.status(200).send('Archivo eliminado')
+            return res.status(200).send('Archivo eliminado')
         }
     })
     
@@ -99,9 +88,9 @@ app.delete('/:pathRuta', (req, res) => {
     const { type, nombre } = req.query
     borrarArchivo(pathRuta, type, nombre,(err)=>{
         if(err){
-            res.status(404).send('No se encontro el archivo')
+            return res.status(404).send('No se encontro el archivo')
         }else{
-            res.status(200).send('Archivo eliminado')
+            return res.status(200).send('Archivo eliminado')
         }
     })
 })
@@ -122,7 +111,7 @@ const descargar = (strRuta, nombre,res) => {
 
 
 app.use((req, res) => {
-    res.json({ error: 'Not Found' }).status(404)
+    return res.json({ error: 'Not Found' }).status(404)
 })
 
 

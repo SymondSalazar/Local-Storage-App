@@ -27,7 +27,11 @@ const procesarFolder = (strRuta,callback) => {
                 return callback(folders, filesArray,null)
             }
         })
-       
+
+        if (folders.length + filesArray.length == 0){
+            return callback(folders,filesArray,null)
+        }
+    
     })
     
 }
