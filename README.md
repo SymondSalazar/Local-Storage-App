@@ -27,7 +27,7 @@ Follow these steps to ensure **Local-Storage-App** runs properly on your local n
     console.log(`Server running at http://your-local-ip:${PORT}`);
     });
    ```
-3. In the client folder, update the const.js in ./src/const/ file:
+3. In the client folder, update the const.js file in ./src/const/ :
     
     Replace:
     ```js
