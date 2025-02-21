@@ -5,6 +5,7 @@ import { Droper } from './droper.jsx';
 import { CreateFolder } from './createFolder.jsx';
 import { useNavigate } from 'react-router-dom';
 import { Cameback } from './cameback.jsx';
+import { VITE_API_KEY } from '../const/const.js';
 
 export function LoadedItems({ ruta }) {
     const navigate = useNavigate()
@@ -13,8 +14,8 @@ export function LoadedItems({ ruta }) {
 
     useEffect(() => {
         let path
-        if (!ruta) { path = import.meta.env.VITE_API_KEY }
-        else { path = `${import.meta.env.VITE_API_KEY}/${ruta}` }
+        if (!ruta) { path = VITE_API_KEY }
+        else { path = `${VITE_API_KEY}/${ruta}` }
         fetch(path)
             .then(res => res.json())
             .then(response => {

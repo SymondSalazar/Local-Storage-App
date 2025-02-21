@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { VITE_API_KEY } from "../const/const.js"
 
 
 export function CreateFolder({path}) {
@@ -12,8 +12,8 @@ export function CreateFolder({path}) {
     const[folderName,setFolderName] = useState('')
     const manejarSubmit = (e)=>{
         let ruta
-        if(!path){ruta = import.meta.env.VITE_API_KEY}
-        else{ruta = `${import.meta.env.VITE_API_KEY}/${path}`}
+        if(!path){ruta = VITE_API_KEY}
+        else{ruta = `${VITE_API_KEY}/${path}`}
         e.preventDefault()
         fetch(ruta, {
             method: 'POST',

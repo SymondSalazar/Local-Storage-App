@@ -1,6 +1,9 @@
 import { useRef,useState } from "react"
 import swal from "sweetalert"
+import { VITE_API_KEY } from "../const/const.js"
+
 export function Droper({ path }) {
+
 
 
     const [dragText, setDragText] = useState("Arrastra tus archivos")
@@ -27,8 +30,8 @@ export function Droper({ path }) {
                 const nombre = elem.name
 
                 let ruta
-                if (!path) { ruta = import.meta.env.VITE_API_KEY }
-                else { ruta = `${import.meta.env.VITE_API_KEY}/${path}` }
+                if (!path) { ruta = VITE_API_KEY }
+                else { ruta = `${VITE_API_KEY}/${path}` }
 
                 fetch(ruta, {
                     method: 'POST',

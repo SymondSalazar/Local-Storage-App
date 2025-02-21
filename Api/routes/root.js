@@ -1,23 +1,17 @@
 import { Router } from "express";
+import { ApiController } from "../controllers/Controller.js";
 
-const router = Router()
+export const rootRouter = Router()
 
-router.get('/',(req,res)=>{
+rootRouter.get('/',ApiController.controllerFolder)
 
-})
+rootRouter.get('/:pathRuta', ApiController.controllerFolder)
 
-router.get('/:pathRuta',(req,res)=>{
-    
-})
+rootRouter.post('/',ApiController.controllerSubirArchivo)
 
-router.post('/:pathRuta',(req,res)=>{
+rootRouter.post('/:pathRuta', ApiController.controllerFolder)
 
-})
+rootRouter.delete('/:pathRuta',ApiController.controllerBorrarArchivo)
 
-router.delete('/',(req,res)=>{
+rootRouter.delete('/', ApiController.controllerBorrarArchivo)
 
-})
-
-router.delete('/:pathRuta ',(req,res)=>{
-
-})

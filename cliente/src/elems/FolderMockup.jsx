@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import swal from "sweetalert"
+import { VITE_API_KEY } from "../const/const.js"
 
 export function FolderMockup({ path, name }) {
     const navigate = useNavigate()
@@ -27,9 +28,9 @@ export function FolderMockup({ path, name }) {
             if(willDelete){
                 let request
                 if (path){
-                    request = `${import.meta.env.VITE_API_KEY}/${path}?type=folder&nombre=${name}`
+                    request = `${VITE_API_KEY}/${path}?type=folder&nombre=${name}`
                 }else{
-                    request = `${import.meta.env.VITE_API_KEY}/?type=folder&nombre=${name}`
+                    request = `${VITE_API_KEY}/?type=folder&nombre=${name}`
                 }
                 console.log(request)
                 fetch(request,{

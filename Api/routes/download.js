@@ -1,11 +1,9 @@
 import { Router } from "express";
+import { FileModel } from "../models/fileSystem.js";
+import { ApiController } from "../controllers/Controller.js";
 
-const router = Router()
+export const downloadRouter = Router()
 
-router.get('/',(req,res)=>{
-    
-})
+downloadRouter.get('/', ApiController.controllerDescargar)
 
-router.get('/:pathRuta',(req,res)=>{
-
-})
+downloadRouter.get('/:pathRuta', ApiController.controllerDescargar)

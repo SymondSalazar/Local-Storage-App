@@ -1,4 +1,5 @@
 import swal from "sweetalert"
+import { VITE_API_KEY } from "../const/const.js"
 export function FileMockup({ path, name }) {
 
 
@@ -13,9 +14,9 @@ export function FileMockup({ path, name }) {
             if (willDelte) {
                 let request
                 if (path) {
-                    request = `${import.meta.env.VITE_API_KEY}/${path}?type=file&nombre=${name}`
+                    request = `${VITE_API_KEY}/${path}?type=file&nombre=${name}`
                 } else {
-                    request = `${import.meta.env.VITE_API_KEY}/?type=file&nombre=${name}`
+                    request = `${VITE_API_KEY}/?type=file&nombre=${name}`
                 }
                 console.log(request)
                 fetch(request, {
@@ -41,9 +42,9 @@ export function FileMockup({ path, name }) {
     const manejarDescarga = ()=>{
         let request
         if(path){
-            request = `${import.meta.env.VITE_API_KEY}/download/files/${path}?nombre=${name}`
+            request = `${VITE_API_KEY}/download/files/${path}?nombre=${name}`
         }else{
-            request = `${import.meta.env.VITE_API_KEY}/download/files/?nombre=${name}`
+            request = `${VITE_API_KEY}/download/files/?nombre=${name}`
         }
 
         fetch(request)
