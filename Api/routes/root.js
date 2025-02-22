@@ -9,7 +9,7 @@ rootRouter.get('/:pathRuta', ApiController.controllerFolder)
 
 rootRouter.post('/',ApiController.controllerSubirArchivo)
 
-rootRouter.post('/:pathRuta', ApiController.controllerFolder)
+rootRouter.post('/:pathRuta', ApiController.controllerSubirArchivo)
 
 rootRouter.delete('/:pathRuta',ApiController.controllerBorrarArchivo)
 
