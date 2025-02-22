@@ -3,7 +3,7 @@ This is my first project built with Node.js, using Express and React. It's also 
 
 # Installlation and Setup
 
-To install al dependencies and strat de project, run the following commands:
+To install al dependencies and start de project, run the following commands:
 
 ```ssh
 npm run install:all && npm start
@@ -31,7 +31,7 @@ Follow these steps to ensure **Local-Storage-App** runs properly on your local n
     
     Replace:
     ```js
-    export const VITE_API_KEY = http://localhost:3000'
+    export const VITE_API_KEY = 'http://localhost:3000'
     ```
     With:
     ```js
